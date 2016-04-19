@@ -94,7 +94,6 @@ class Matching:
 	        for v in range(0, nvertex):
 	            if self.mate[v] == -1 and nodeList[v].label == 0:
 	                self.assignLabel(v, 1, -1)
-	        print self.mate
 	        augmented = 0
 	        while 1:
 
@@ -505,9 +504,9 @@ class Matching:
 
 # Unit tests
 # if __name__ == '__main__':
-match = Matching()
-match.initEdges([(0, 3, 1070), (0, 4, 1877), (1, 3, 2246), (1, 4, 2002), (3, 4, 3415)])
-print match.maxWeightmatching()
+# match = Matching()
+# match.initEdges([(0, 3, 1070), (0, 4, 1877), (1, 3, 2246), (1, 4, 2002), (3, 4, 3415)])
+# print match.maxWeightmatching()
 # print" [ -1, 8, 3, 2, 7, 6, 5, 4, 1 ]"
 	# import unittest, math
 
