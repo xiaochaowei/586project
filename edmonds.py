@@ -95,7 +95,7 @@ class Matching:
 	            if self.mate[v] == -1 and nodeList[v].label == 0:
 	                self.assignLabel(v, 1, -1)
 	        augmented = 0
-	        print self.mate
+	        # print self.mate
 	        while 1:
 
 	            while self.queue and not augmented:
