@@ -96,7 +96,6 @@ class Matching:
 	                self.assignLabel(v, 1, -1)
 
 	        augmented = 0
-	        print self.mate
 	        while 1:
 
 	            while self.queue and not augmented:
@@ -159,7 +158,7 @@ class Matching:
 	                node = self.nodeList[v]
 	                if node == None:
 	                    continue
-	                if node.label == 0 and node.bestedge != -1:
+	                if self.nodeList[node.inblossom].label == 0 and node.bestedge != -1:
 	                    d = self.slack(node.bestedge)
 	                    if deltatype == -1 or d < delta:
 	                        delta = d
@@ -506,10 +505,7 @@ class Matching:
 
 # Unit tests
 # if __name__ == '__main__':
-match = Matching()
-match.initEdges([ (1,2,23), (1,5,22), (1,6,15), (2,3,25), (3,4,22), (4,5,25), (4,8,14), (5,7,13) ])
-print match.maxWeightmatching()
-print" [ -1, 6, 3, 2, 8, 7, 1, 5, 4 ]"
+
 	# import unittest, math
 
 	# class MaxWeightMatchingTests(unittest.TestCase):
