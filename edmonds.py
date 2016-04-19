@@ -95,6 +95,7 @@ class Matching:
 	            if self.mate[v] == -1 and nodeList[v].label == 0:
 	                self.assignLabel(v, 1, -1)
 	        augmented = 0
+	        print self.mate
 	        while 1:
 
 	            while self.queue and not augmented:
@@ -204,7 +205,7 @@ class Matching:
 	                node = self.nodeList[b]
 	                if node == None:
 	                    continue
-	                if node.base >= 0 and node.parent == -1:
+	                if node.base >= 0 and node.father == -1:
 	                    if node.label == 1:
 	                        node.dualVar += delta
 	                    elif node.label == 2:
@@ -504,9 +505,9 @@ class Matching:
 
 # Unit tests
 # if __name__ == '__main__':
-# match = Matching()
-# match.initEdges([(0, 3, 1070), (0, 4, 1877), (1, 3, 2246), (1, 4, 2002), (3, 4, 3415)])
-# print match.maxWeightmatching()
+match = Matching()
+match.initEdges([(0, 1, 8816), (0, 3, 2652), (0, 6, 4360), (0, 7, 6857), (0, 9, 7774), (0, 10, 4387), (1, 3, 3815), (1, 4, 1752), (1, 5, 3718), (1, 7, 8951), (1, 8, 5094), (1, 11, 2544), (2, 10, 4501), (2, 11, 1850), (3, 4, 4498), (3, 5, 3611), (3, 7, 8965), (3, 8, 350), (3, 9, 8149), (3, 10, 8564), (4, 10, 5777), (4, 5, 9623), (4, 7, 3456), (5, 6, 419), (5, 7, 8648), (5, 8, 2782), (6, 9, 1618), (6, 11, 3195), (6, 7, 6451), (7, 11, 7488), (8, 9, 4366), (9, 10, 8735), (10, 11, 5344)])
+print match.maxWeightmatching()
 # print" [ -1, 8, 3, 2, 7, 6, 5, 4, 1 ]"
 	# import unittest, math
 
