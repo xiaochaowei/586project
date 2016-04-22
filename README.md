@@ -27,6 +27,8 @@ python testBaseline.py sample_data/dense_n1000_e374362.p
 ```
 Note, the epsilon value can be changed by modify the parameter of the function <em>maxWeightmatching(eps)</em> in testScale.py, by default it is set to 1/16.
 
+Some random graph sample data is included in test/sample_data.
+
 #### 2. Approximating algorithm accuracy test:
 This test designed to test approximation accuracy of the Duan-Pettie algorithm and the Greedy algorithm.  It tests on 1000 randomly generated graphs and compute the average error.
 
