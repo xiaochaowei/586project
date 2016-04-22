@@ -8,14 +8,15 @@ pip install networkx
 ```
 
 ### Files
-baseline.py -- Edmonds algorithm 1965<br/>
-gabow.py – Edmonds algorithm improved by Gabow 1974<br/>
-scaling.py – Duan-Pettie algorithm<br/>
-greedymatching.py<br/>
+baseline.py - Edmonds algorithm 1965<br/>
+gabow.py - Edmonds algorithm improved by Gabow 1974<br/>
+scaling.py - Duan-Pettie algorithm<br/>
+greedymatching.py - Greedy algorithm<br/>
 
 ### Running the tests
-#### 1. Wall clock running time tests:<br/>
 tests are in the test folder:<br/>
+#### 1. Wall clock running time tests:<br/>
+This test designed to measure the wall clock running time.
 use following command to test:<br/>
 ```
 python test[algorithm_name].py [graph_input]
