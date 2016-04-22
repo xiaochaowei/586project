@@ -23,3 +23,4 @@ For example:
 ```
 python testBaseline.py sample_data/dense_n1000_e374362.p
 ```
+Note, the epsilon value can be changed by modify the parameter of the function <em>maxWeightmatching(eps)</em>, by default it is set to 1/16.
