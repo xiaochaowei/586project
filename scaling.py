@@ -134,12 +134,18 @@ class Matching:
 				self.cleanData()
 				next_stage = False
 				for v in range(0, nvertex):
-					if self.mate[v] == -1 and nodeList[v].label == 0:
+					if self.mate[v] == -1 and nodeList[nodeList[v].inblossom].label== 0:
 						if self.checkBreakTie(v):
 							next_stage = True
 							break
 						self.assignLabel(v, 1, -1)
 				if next_stage == True:
+					break
+				flag_break = True
+				for v in range(0, nvertex):
+					if nodeList[v].label !=0:
+						flag_break = False
+				if flag_break:
 					break
 				augmented = 0
 				while self.queue and not augmented:
@@ -509,18 +515,20 @@ class Matching:
 		node2 = self.nodeList[w]
 		if node1.inblossom == node2.inblossom and node1.inblossom > self.nvertex:
 			return True
-		elif self.mate[v] >= 0 and self.mate[w] >=0:
+		elif self.endpoint[self.mate[v]] == w and self.mate[v] != -1 and self.mate[w]!=-1:
+		# elif self.mate[v] >= 0 and self.mate[w] >=0:
 			
 			# assert self.mate[w] >=0
 			kslack = self.nodeList[v].dualVar + self.nodeList[w].dualVar - (wt // delta * delta)
-			print kslack
+			# print kslack
 			if kslack / delta >= 0:
 				return True
 			else:
 				return False
-		elif self.mate[v] <0 or self.mate[w] < 0:
+		else:
+		# elif self.mate[v] <0 or self.mate[w] < 0:
 			kslack = node1.dualVar + node2.dualVar - (wt // delta * delta)
-			print kslack
+			# print kslack
 			if kslack / delta == -1:
 				return True
 			else:
@@ -557,12 +565,21 @@ if __name__ == '__main__':
 	# # create blossom, relabel as T in more than one way, expand, augment
 	match = Matching()
 	# match.initEdges([(1,2,8), (1,5,4),(1,4,4),(2,3,8),(3,4,8),(4,5,2) ])
-	match.initEdges([ (1,2,128), (1,7,45), (2,3,50), (3,4,45), (4,5,95), (4,6,94), (5,6,94), (6,7,50), (1,8,30), (3,11,35), (5,9,36), (7,10,26), (11,12,5) ])
-	print match.maxWeightmatching(1/4.0)
+	# match.initEdges([ (1,2,128), (1,7,45), (2,3,50), (3,4,45), (4,5,95), (4,6,94), (5,6,94), (6,7,50), (1,8,30), (3,11,35), (5,9,36), (7,10,26), (11,12,5) ])
+	import networkx as nx
+	import pickle
+	G = pickle.load(open('dense_n6_e15.p','r'))
+	# print list(G.edges(data='weight', default=1))
+	match.initEdges(list(G.edges(data='weight', default=1)))
+	result = match.maxWeightmatching(1/4.0)
+	total = 0
+	for u, v in enumerate(result):
+		if v != -1:
+			total += G[u][v]['weight']
+	total = total / 2
+	print total
 	# print  [-1, 6, 3, 2, 8, 7, 1, 5, 4, 10, 9 ]
 
 
     # # print match.maxWeightmatching()
-
-
 

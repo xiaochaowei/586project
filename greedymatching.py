@@ -1,3 +1,4 @@
+import random
 def greedyApproMatching(edges):
 	edges.sort(key = lambda tup: tup[2], reverse=True)
 	# print edges
@@ -17,13 +18,14 @@ def greedyApproMatching(edges):
 
 # def ApproMatching(edges):
 
-import networkx as nx
-import pickle
-G = pickle.load(open('data/geometric_n1000_e21506.p','r'))
-result = greedyApproMatching(list(G.edges(data='weight', default=1)))
-total = 0
-for u, v in enumerate(result):
-	if v != -1:
-		total += G[u][v]['weight']
-total = total / 2
-print total
+# import networkx as nx
+# import pickle
+# G = pickle.load(open('data/geometric_n1000_e21506.p','r'))
+# result = random_Matching(list(G.edges(data='weight',default = 1)), 100)
+# # result = greedyApproMatching(list(G.edges(data='weight', default=1)))
+# total = 0
+# for u, v in enumerate(result):
+# 	if v != -1:
+# 		total += G[u][v]['weight']
+# total = total / 2
+# print total
